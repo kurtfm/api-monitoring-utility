@@ -1,5 +1,5 @@
 
-# palantiri (API Monitoring Utility)
+# API Monitoring Utility
 
 This utility is designed monitor your application (currently just APIs) as if it was a customer.
 
