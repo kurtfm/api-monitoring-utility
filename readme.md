@@ -80,7 +80,7 @@ test_file: tests.json
 env_file: env.json
 global_file: globals.json
 ```
-with the default config palantiri will look for target tests like this:
+with the default config api-monitoring-utility will look for target tests like this:
 
 `<app root>/app/resources/newman/<target>-tests.json`
 
@@ -105,7 +105,7 @@ This will use the default schedule from the config or a specific one can be set 
 Once you have built the Docker image you can run it for each target(getting AWS access to your docker container may be different).
 
  ```
- * * * * * docker run --rm=true --network="host" -v ~/.aws:/root/.aws palantiri:latest --target=monitor-app-demo --environment=dev --metricsagent=dockerhost >/dev/null
+ * * * * * docker run --rm=true --network="host" -v ~/.aws:/root/.aws api-monitoring-utility:latest --target=monitor-app-demo --environment=dev --metricsagent=dockerhost >/dev/null
  ```
 
 ## configuration
@@ -165,7 +165,7 @@ Some configuration values can be set/overridden at run time
  You can run each monitor individually (getting AWS access to your docker container may be different)
 
  ```
- * * * * * docker run --rm=true --network="host" -v ~/.aws:/root/.aws palantiri:latest --target=monitor-app-demo --environment=dev --metricsagent=dockerhost >/dev/null
+ * * * * * docker run --rm=true --network="host" -v ~/.aws:/root/.aws api-monitoring-utility:latest --target=monitor-app-demo --environment=dev --metricsagent=dockerhost >/dev/null
  ```
 
 You can also use the scheduler config combined with the `bin/start-api-scheduled-monitor.js`
@@ -177,7 +177,7 @@ bin/start-api-scheduled-monitor.js --target=monitor-app-demo
 This will use the default schedule from the config or a specific one can be set for target.
 
 ## Deploying
-palantiri utlizes gulp for local dev tasks (like unit tests) but has also been setup for CDID deployment.
+api-monitoring-utility utlizes gulp for local dev tasks (like unit tests) but has also been setup for CDID deployment.
 
 ### run unit tests
 
@@ -248,16 +248,16 @@ Use this to test and build app into 'dist' directory in preparation for deployme
 
  ### dockerization
 
- Building a palantiri docker image...
+ Building a api-monitoring-utility docker image...
  ```
  cd docker
- docker build -t palantiri -f Dockerfile.api
+ docker build -t api-monitoring-utility -f Dockerfile.api
  ```
  note: original design plan was to add in UI monitoring capability as well via headlesss browser which is why a specfic docker file name is used
 
  Running docker container... (getting AWS access to your docker container may be different)
  ```
- docker run --rm=true --network="host" -v ~/.aws:/root/.aws palantiri:latest --target=monitor-app-demo --environment=dev --metricsagent=dockerhost
+ docker run --rm=true --network="host" -v ~/.aws:/root/.aws api-monitoring-utility:latest --target=monitor-app-demo --environment=dev --metricsagent=dockerhost
  ```
  more details in the docker/readme
 
@@ -272,7 +272,7 @@ Use this to test and build app into 'dist' directory in preparation for deployme
 ```
 istanbul cover gulp test
 ```
-Report will be in coverage will here: palantiri/coverage/lcov-report/index.html
+Report will be in coverage will here: api-monitoring-utility/coverage/lcov-report/index.html
 
 ## License
 
